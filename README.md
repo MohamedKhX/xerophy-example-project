@@ -7,7 +7,7 @@ simple blog made to test xerophy framework
 
 ## How to use the project
 
-- Clone the project from the repostiry
+- Clone the project from the repository
 - Create .env file
 - Create a new mysql database
 - Create (id) field with autoincrement

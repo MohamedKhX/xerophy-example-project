@@ -1,0 +1,39 @@
+{% extends "layout/main.html.twig" %}
+
+
+
+{% block content %}
+    <div class="container">
+
+        {% if errors() %}
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <ul class="my-0">
+                    {% for error in errors() %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        {% endif %}
+
+        <div class="row d-flex justify-content-center">
+            <div class="col-8">
+                <div class="card my-5">
+                    <h5 class="card-header">Create a new post</h5>
+                    <div class="card-body">
+                        <form action="/{{ route('posts-edit', {id: post.id}) }}" method="post">
+                            {{ method('PUT') }}
+                            <div class="input-group">
+                                <input class="form-control" id="title" type="text" name="title" placeholder="Title..." value="{{ post.title }}">
+                            </div>
+                            <div class="input-group my-3">
+                                <textarea class="form-control" name="description" id="" cols="30" rows="10" placeholder="content...">{{ post.description }}</textarea>
+                            </div>
+                            <input type="submit" class="btn btn-success" value="Update">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

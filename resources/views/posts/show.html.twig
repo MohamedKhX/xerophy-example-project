@@ -1,0 +1,25 @@
+{% extends 'layout/main.html.twig' %}
+
+
+{% block content %}
+    <div class="container">
+        <a href="/{{ route('posts-index') }}" class="btn btn-primary">Back</a>
+
+        <div class="row d-flex justify-content-center">
+            <div class="col-10">
+                <div class="card my-5">
+                    <h5 class="card-header">May 5 2020</h5>
+                    <div class="card-body">
+                        <h4 style="font-weight: bold" class="card-title">{{ post.title }}</h4>
+                        <p class="card-text">{{ post.description | raw }}</p>
+                        <a href="/{{ route('posts-edit', {id: post.id}) }}" class="btn btn-primary">Edit</a>
+                        <form class="d-inline-block" action="/{{ route('posts-delete', {id: post.id}) }}" method="post">
+                            {{ method('DELETE') }}
+                            <input type="submit" class="btn btn-danger" value="Delete">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
